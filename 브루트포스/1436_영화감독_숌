@@ -6,7 +6,7 @@
       "name": "백준테스트파일.ipynb",
       "provenance": [],
       "collapsed_sections": [],
-      "authorship_tag": "ABX9TyM934vgNGoCCC+IpM0xgwGF",
+      "authorship_tag": "ABX9TyMmnFi/0uDulyoS//lRVhaY",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -48,6 +48,42 @@
         "\n",
         "# 출력\n",
         "첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "SpTKTHKtKPek",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 53
+        },
+        "outputId": "7909b277-d6eb-432b-97b5-9c5c4877bfc1"
+      },
+      "source": [
+        "# 와 이거 너무 어렵게 생각함. 틀리고 바로 1분만에 idea 떠오름\n",
+        "N = int(input())\n",
+        "cnt = 0\n",
+        "start = 666\n",
+        "while(True):\n",
+        "  if '666' in str(start):\n",
+        "    cnt += 1\n",
+        "  if cnt == N:\n",
+        "    print(start)\n",
+        "    break\n",
+        "  start += 1"
+      ],
+      "execution_count": 98,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "20\n",
+            "10666\n"
+          ],
+          "name": "stdout"
+        }
       ]
     },
     {

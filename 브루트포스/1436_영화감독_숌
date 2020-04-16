@@ -6,7 +6,7 @@
       "name": "백준테스트파일.ipynb",
       "provenance": [],
       "collapsed_sections": [],
-      "authorship_tag": "ABX9TyNU1Ah4Z9sswwWl0UP0JftV",
+      "authorship_tag": "ABX9TyM934vgNGoCCC+IpM0xgwGF",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -53,66 +53,73 @@
     {
       "cell_type": "code",
       "metadata": {
-        "id": "ZdgDcJlt29HN",
+        "id": "25QVu2SaJbsP",
         "colab_type": "code",
-        "outputId": "62a19d22-96cc-47d0-aaec-cb2c15b061ea",
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 35
-        }
+          "height": 53
+        },
+        "outputId": "a87607df-0e0d-43c2-b341-e73b57565f6f"
       },
       "source": [
-        "3자리 : 1                                                   = 1  \n",
-        "4자리 : 5ㅁㅁㅁ, ㅁㅁㅁ9 , 7ㅁㅁㅁ    -> 5 + 10 + 3(9-5-1)  = 18\n",
-        "5자리 : 65ㅁㅁㅁ, ㅁㅁㅁ99, 67ㅁㅁㅁ  -> 65 + 100 + 33      = 198\n",
-        "6자리 : 665ㅁㅁㅁ, ㅁㅁㅁ999, 667ㅁㅁㅁ -> 665 + 1000 + 333 = 1998\n",
-        "                                                            = 19998\n"
+        "def front1_chk (start_tmp,end_tmp,bef_start):\n",
+        "  for f1 in range(start_tmp,end_tmp):\n",
+        "      bef_start += 1\n",
+        "      if bef_start == N:\n",
+        "        print(str(f1)+seq)\n",
+        "        return None\n",
+        "  return bef_start\n",
+        "\n",
+        "def back_chk(last_tmp,digit,bef_start):\n",
+        "  for f2 in range(last_tmp+1):\n",
+        "      bef_start += 1\n",
+        "      if bef_start == N:\n",
+        "        print(seq+str(f2).zfill(digit))\n",
+        "        return None\n",
+        "  return bef_start\n",
+        "\n",
+        "def front2_chk (end_tmp,last_tmp,bef_start):\n",
+        "  for f3 in range(end_tmp+1,last_tmp+1):\n",
+        "      bef_start += 1\n",
+        "      if bef_start == N:\n",
+        "        print(str(f3)+seq)\n",
+        "        return None\n",
+        "  return bef_start\n",
+        "        \n",
+        "seq = '666'\n",
+        "N = int(input())\n",
+        "digit = 0\n",
+        "start = 1\n",
+        "if N == 1:\n",
+        "  print(seq)\n",
+        "else:\n",
+        "  while(N > start):\n",
+        "    digit += 1\n",
+        "    bef_start = start\n",
+        "    start += (2*10**digit)-2\n",
+        "    if N <= start:\n",
+        "      start_tmp = 1*10**(digit-1)\n",
+        "      end_tmp = int('6'*digit)\n",
+        "      last_tmp = int('9'*digit)\n",
+        "      bef_start = front1_chk(start_tmp,end_tmp,bef_start)\n",
+        "      if not bef_start:\n",
+        "        break\n",
+        "      bef_start = back_chk(last_tmp,digit,bef_start)\n",
+        "      if not bef_start:\n",
+        "        break\n",
+        "      bef_start = front2_chk(end_tmp,last_tmp,bef_start)\n",
+        "      if not bef_start:\n",
+        "        break"
       ],
-      "execution_count": 1,
+      "execution_count": 93,
       "outputs": [
         {
           "output_type": "stream",
           "text": [
-            "\n"
+            "30\n",
+            "20666\n"
           ],
           "name": "stdout"
-        }
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "H0Cp1rG6vu0A",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 206
-        },
-        "outputId": "d084edb0-f0a1-402d-8b3b-557e3d67747d"
-      },
-      "source": [
-        "fix = '666'\n",
-        "N = int(input())"
-      ],
-      "execution_count": 12,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "text": [
-            "3\n"
-          ],
-          "name": "stdout"
-        },
-        {
-          "output_type": "error",
-          "ename": "TypeError",
-          "evalue": "ignored",
-          "traceback": [
-            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-            "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
-            "\u001b[0;32m<ipython-input-12-e3c3a513e7e1>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0mfix\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m'666'\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0mN\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0minput\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
-            "\u001b[0;31mTypeError\u001b[0m: 'int' object is not callable"
-          ]
         }
       ]
     }
